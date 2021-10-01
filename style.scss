@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: "Poppins", sans-serif;
 }
 
 @mixin flexCenter() {
@@ -16,59 +17,65 @@ $Very-Dark-Cyan: hsl(192, 100%, 9%);
 $Grayish-Blue: hsl(208, 11%, 55%);
 
 header {
-  background: yellow;
+  
+  background: url(images/bg-hero-mobile.svg) no-repeat;
+  background-size: cover;
   nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-height: 8vh;
+    min-height: 10vh;
     .logo-img {
-      min-width: 1vw;
-      max-height: 3vh;
+      width: 6em;
+      // height: 1em;
       margin-left: 5%;
     }
     .btn-in-nav {
-      // max-height: 15vh;
-      padding: 0.45vmax 1.5vmax;
+      padding: 0.45em 1.75em;
       margin-right: 5%;
 
       background: white;
       color: black;
+      box-shadow: pink;
 
       border: none;
       border-radius: 5rem;
 
       font-size: clamp(0.75rem, 1%, 1rem);
+      box-shadow: 0 0.15rem 0.5rem rgb(255, 213, 220);
     }
   }
   .header-content {
-    // background: aquamarine;
     @include flexCenter();
-    margin-top: 5%;
+    margin-top: 3em;
     .header-inner {
-        background: peru;
-        margin: 1rem 2rem;
-        min-height: 50vh;
-        max-width: 75vw;
+      @include flexCenter();
+      flex-direction: column;
+      margin: 1rem 2rem;
       .header-heading {
         text-align: center;
-        // margin: 1rem;
-        font-size: clamp(1.7rem, 10%, 30rem);
+        font-weight: bold;
+        font-size: clamp(1.5rem, 10%, 30rem);
       }
       .header-para {
         text-align: center;
         margin: 1rem 0;
         font-size: clamp(1rem, 5%, 15rem);
-        // background: pink;
       }
       .btn-under-header-para {
-        padding: 1vmax 4vmax;
-        background: white;
-        color: black;
+        font-weight: bold;
+        padding: 0.8em 4em;
+        margin: 0.5em 0;
+        background: $Pink;
+        color: white;
         border: none;
         border-radius: 5rem;
-        font-size: clamp(.75rem, 1%, 1rem);
-        
+        font-size: clamp(0.75rem, 1%, 1rem);
+        box-shadow: 0 0.25rem 0.5rem pink;
+      }
+      img {
+        width: 100%;
+        margin-top: 1.5rem;
       }
     }
   }
