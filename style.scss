@@ -4,35 +4,71 @@
   font-family: "Poppins", sans-serif;
 }
 
+// <-----------------------------------------------------
+// Mixin Library
+// ----------------------------------------------------->
+
+
 @mixin flexCenter() {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-// color library
+@mixin imgSettings($width) {
+  width: $width;
+  margin-top: 1.5rem;
+}
+@mixin paraSettings() {
+  text-align: center;
+  max-width: 20rem;
+
+  margin: 1rem 0;
+  font-size: clamp(1rem, 5%, 15rem);
+}
+@mixin headingSettings() {
+  text-align: center;
+  font-weight: bold;
+  max-width: 20rem;
+  font-size: clamp(1.5rem, 10%, 30rem);
+  color: $Very-Dark-Cyan;
+}
+
+// <-----------------------------------------------------
+// Color Library
+// ----------------------------------------------------->
+
+
 $Pink: hsl(322, 100%, 66%);
 $Very-Pale-Cyan: hsl(193, 100%, 96%);
 $Very-Dark-Cyan: hsl(192, 100%, 9%);
 $Grayish-Blue: hsl(208, 11%, 55%);
 
+
+// <-----------------------------------------------------
+// Header Styles
+// ----------------------------------------------------->
+
+
 header {
-  
-  background: url(images/bg-hero-mobile.svg) no-repeat;
+  background: url(images/bg-hero-desktop.svg) no-repeat;
   background-size: cover;
+  width:100vw;
   nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-height: 10vh;
+
     .logo-img {
       width: 6em;
       // height: 1em;
       margin-left: 5%;
+      margin: 2em;
     }
     .btn-in-nav {
       padding: 0.45em 1.75em;
       margin-right: 5%;
+      margin: 2em;
 
       background: white;
       color: black;
@@ -51,16 +87,12 @@ header {
     .header-inner {
       @include flexCenter();
       flex-direction: column;
-      margin: 1rem 2rem;
+      margin: 1rem 2em;
       .header-heading {
-        text-align: center;
-        font-weight: bold;
-        font-size: clamp(1.5rem, 10%, 30rem);
+        @include headingSettings();
       }
       .header-para {
-        text-align: center;
-        margin: 1rem 0;
-        font-size: clamp(1rem, 5%, 15rem);
+        @include paraSettings();
       }
       .btn-under-header-para {
         font-weight: bold;
@@ -74,9 +106,113 @@ header {
         box-shadow: 0 0.25rem 0.5rem pink;
       }
       img {
-        width: 100%;
-        margin-top: 1.5rem;
+        @include imgSettings(100%);
       }
     }
   }
+}
+
+
+// <-----------------------------------------------------
+// Main component
+// ----------------------------------------------------->
+
+
+main {
+  @include flexCenter();
+  flex-direction: column;
+  padding-bottom: 5rem;
+
+// <----------
+// Card1 styles
+// ---------->
+
+  .section1 {
+    box-shadow:0 0 5px 2px rgb(252, 244, 244);
+    width: 90%;
+    margin:3em;
+    border-radius: 3%;
+    .section1-content {
+      @include flexCenter();
+      flex-direction: column;
+      img {
+        @include imgSettings(75%);
+        margin-top: 4em;
+      }
+      .section1-text {
+        margin-top: 2em;
+        padding: 1rem 2rem;
+        .section1-heading {
+          @include headingSettings();
+        }
+        .section1-para {
+         @include paraSettings();
+         color: $Grayish-Blue;
+        }
+      }
+    }
+  }
+
+
+// <---------
+// Card2 styles
+// --------->
+
+.section2 {
+  box-shadow:0 0 5px 2px rgb(252, 244, 244);
+  width: 90%;
+  margin:3em;
+  border-radius: 3%;
+  .section2-content {
+    @include flexCenter();
+    flex-direction: column;
+    img {
+      @include imgSettings(75%);
+      margin-top: 4em;
+    }
+    .section2-text {
+      margin-top: 2em;
+      padding: 1rem 2rem;
+      .section2-heading {
+        @include headingSettings();
+      }
+      .section2-para {
+       @include paraSettings();
+       color: $Grayish-Blue;
+      }
+    }
+  }
+}
+
+
+// <---------
+// Card3 styles
+// --------->
+
+
+.section3 {
+  box-shadow:0 0 5px 2px rgb(252, 244, 244);
+  width: 90%;
+  margin:3em;
+  border-radius: 3%;
+  .section3-content {
+    @include flexCenter();
+    flex-direction: column;
+    img {
+      @include imgSettings(75%);
+      margin-top: 4em;
+    }
+    .section3-text {
+      margin-top: 2em;
+      padding: 1rem 2rem;
+      .section3-heading {
+        @include headingSettings();
+      }
+      .section3-para {
+       @include paraSettings();
+       color: $Grayish-Blue;
+      }
+    }
+  }
+}
 }
