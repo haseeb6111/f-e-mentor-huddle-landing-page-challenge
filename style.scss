@@ -3,13 +3,13 @@
   padding: 0;
   font-family: "Poppins", sans-serif;
 }
-
+/* 
 // <-----------------------------------------------------
 // Mixin Library
-// ----------------------------------------------------->
+// -----------------------------------------------------> 
+*/
 
-
-@mixin flexCenter() {
+@mixin flexCenter(){
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,26 +34,28 @@
   color: $Very-Dark-Cyan;
 }
 
-// <-----------------------------------------------------
+/*
+ // <-----------------------------------------------------
 // Color Library
-// ----------------------------------------------------->
-
+// -----------------------------------------------------> 
+*/
 
 $Pink: hsl(322, 100%, 66%);
 $Very-Pale-Cyan: hsl(193, 100%, 96%);
 $Very-Dark-Cyan: hsl(192, 100%, 9%);
 $Grayish-Blue: hsl(208, 11%, 55%);
 
-
+/* 
 // <-----------------------------------------------------
 // Header Styles
 // ----------------------------------------------------->
-
+*/
 
 header {
-  background: url(images/bg-hero-desktop.svg) no-repeat;
+  background: url(images/bg-hero-desktop.svg) no-repeat,
+  rgb(255, 248, 249);
   background-size: cover;
-  width:100vw;
+  width: 100vw;
   nav {
     display: flex;
     align-items: center;
@@ -111,26 +113,25 @@ header {
     }
   }
 }
-
-
+/* 
 // <-----------------------------------------------------
 // Main component
 // ----------------------------------------------------->
-
+ */
 
 main {
   @include flexCenter();
   flex-direction: column;
   padding-bottom: 5rem;
 
-// <----------
-// Card1 styles
-// ---------->
+  /* // <----------
+  // Card1 styles
+  // ----------> */
 
   .section1 {
-    box-shadow:0 0 5px 2px rgb(252, 244, 244);
+    box-shadow: 0 0 5px 2px rgb(252, 244, 244);
     width: 90%;
-    margin:3em;
+    margin: 3em;
     border-radius: 3%;
     .section1-content {
       @include flexCenter();
@@ -146,73 +147,179 @@ main {
           @include headingSettings();
         }
         .section1-para {
-         @include paraSettings();
-         color: $Grayish-Blue;
+          @include paraSettings();
+          color: $Grayish-Blue;
         }
       }
     }
   }
+/* 
+  // <---------
+  // Card2 styles
+  // ---------> */
 
-
-// <---------
-// Card2 styles
-// --------->
-
-.section2 {
-  box-shadow:0 0 5px 2px rgb(252, 244, 244);
-  width: 90%;
-  margin:3em;
-  border-radius: 3%;
-  .section2-content {
-    @include flexCenter();
-    flex-direction: column;
-    img {
-      @include imgSettings(75%);
-      margin-top: 4em;
-    }
-    .section2-text {
-      margin-top: 2em;
-      padding: 1rem 2rem;
-      .section2-heading {
-        @include headingSettings();
+  .section2 {
+    box-shadow: 0 0 5px 2px rgb(252, 244, 244);
+    width: 90%;
+    margin: 3em;
+    border-radius: 3%;
+    .section2-content {
+      @include flexCenter();
+      flex-direction: column;
+      img {
+        @include imgSettings(75%);
+        margin-top: 4em;
       }
-      .section2-para {
-       @include paraSettings();
-       color: $Grayish-Blue;
+      .section2-text {
+        margin-top: 2em;
+        padding: 1rem 2rem;
+        .section2-heading {
+          @include headingSettings();
+        }
+        .section2-para {
+          @include paraSettings();
+          color: $Grayish-Blue;
+        }
+      }
+    }
+  }
+/* 
+  // <---------
+  // Card3 styles
+  // ---------> */
+
+  .section3 {
+    box-shadow: 0 0 5px 2px rgb(252, 244, 244);
+    width: 90%;
+    margin: 3em 3em 0 3em;
+    border-radius: 3%;
+    .section3-content {
+      @include flexCenter();
+      flex-direction: column;
+      img {
+        @include imgSettings(75%);
+        margin-top: 4em;
+      }
+      .section3-text {
+        margin-top: 2em;
+        padding: 1rem 2rem;
+        .section3-heading {
+          @include headingSettings();
+        }
+        .section3-para {
+          @include paraSettings();
+          color: $Grayish-Blue;
+        }
       }
     }
   }
 }
 
+/* 
+// <-----------------------------------------------------
+card between footer and main component
+// ----------------------------------------------------->
+ */
 
-// <---------
-// Card3 styles
-// --------->
+.middle-card {
+  background: white;
+  box-shadow:0 -5px 5px -2px rgb(252, 244, 244);
 
-
-.section3 {
-  box-shadow:0 0 5px 2px rgb(252, 244, 244);
-  width: 90%;
-  margin:3em;
-  border-radius: 3%;
-  .section3-content {
+  margin: 1em;
+  border-radius: 1rem;
+  @include flexCenter();
+  transform: translateY(5em);
+  .middle-card-inner {
     @include flexCenter();
     flex-direction: column;
-    img {
-      @include imgSettings(75%);
-      margin-top: 4em;
+    padding: 1em;
+    p {
+      font-size: .9em;
+      font-weight: bold;
     }
-    .section3-text {
-      margin-top: 2em;
-      padding: 1rem 2rem;
-      .section3-heading {
-        @include headingSettings();
-      }
-      .section3-para {
-       @include paraSettings();
-       color: $Grayish-Blue;
-      }
+    button {
+      padding: 0.45em 1.75em;
+      margin-right: 5%;
+      margin: 2em;
+      background: $Pink;
+      color: white;
+      box-shadow: pink;
+      border: none;
+      border-radius: 5rem;
+      font-size: clamp(0.75rem, 1%, 1rem);
+      box-shadow: 0 0.15rem 0.5rem rgb(255, 213, 220);
     }
   }
 }
+
+/* // <-----------------------------------------------------
+// Footer component
+// -----------------------------------------------------> */
+
+footer {
+  background: $Very-Dark-Cyan;
+  img {
+    margin: 6em 0 0 0.5em;
+  }
+  .footer-div1 {
+    margin-top: 2em;
+    color: white;
+    .location {
+      padding: 0.5rem 0;
+      display: flex;
+      i {
+        margin-left: 0.5em;
+      }
+      .location-text {
+        margin: 0 1em;
+      }
+    }
+    .phone {
+      padding: 0.5rem 0;
+      display: flex;
+      i {
+        margin-left: 0.5em;
+      }
+      .phone-text {
+        margin-left: 1em;
+      }
+    }
+    .mail {
+      padding: 0.5rem 0;
+      display: flex;
+      i {
+        margin-left: 0.5em;
+      }
+      .mail-text {
+        margin-left: 1em;
+      }
+    }
+  }
+  .footer-div2 {
+    padding: 2rem 0;
+    color: white;
+    ul {
+      li {
+        padding: 0.5em;
+      }
+    }
+  }
+
+  .footer-last {
+    .social-media-icons {
+      display: flex;
+      justify-content: center;
+      .fab {
+        color: white;
+        font-size: 1.4rem;
+        padding: 0.3em 0.3em 1em 0.3em;
+      }
+    }
+    p {
+      color: white;
+      text-align: center;
+      font-size: 0.7rem;
+      padding-bottom: 3rem;
+    }
+  }
 }
