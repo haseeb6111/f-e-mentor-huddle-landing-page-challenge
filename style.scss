@@ -3,34 +3,54 @@
   padding: 0;
   font-family: "Poppins", sans-serif;
 }
+
+/*
+ // <-----------------------------------------------------
+// Fonts Library
+// ----------------------------------------------------> 
+*/
+
+$fs-headings: clamp(1.45rem, 30%, 1.7rem);
+$fs-para: clamp(0.75rem, 30%, 1rem);
+
 /* 
 // <-----------------------------------------------------
 // Mixin Library
 // -----------------------------------------------------> 
 */
 
-@mixin flexCenter(){
+@mixin flexCenter() {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+@mixin sectionSettings() {
+  box-shadow: 0 0 5px 2px rgb(252, 244, 244);
+  margin: 1.5em;
+  border-radius: 3%;
+}
 @mixin imgSettings($width) {
   width: $width;
+  max-width: 500px;
   margin-top: 1.5rem;
 }
-@mixin paraSettings() {
-  text-align: center;
-  max-width: 20rem;
 
-  margin: 1rem 0;
-  font-size: clamp(1rem, 5%, 15rem);
+@mixin textSettings {
+  max-width: 350px;
+  margin-top: 2em;
 }
-@mixin headingSettings() {
-  text-align: center;
+
+@mixin paraSettings($text-direction) {
+  text-align: $text-direction;
+  // max-width: 10rem;
+  margin: 1rem 0;
+  font-size: $fs-para;
+}
+@mixin headingSettings($text-direction) {
+  text-align: $text-direction;
   font-weight: bold;
-  max-width: 20rem;
-  font-size: clamp(1.5rem, 10%, 30rem);
+  font-size: $fs-headings;
   color: $Very-Dark-Cyan;
 }
 
@@ -52,63 +72,68 @@ $Grayish-Blue: hsl(208, 11%, 55%);
 */
 
 header {
-  background: url(images/bg-hero-desktop.svg) no-repeat,
-  rgb(255, 248, 249);
+  background: url(images/bg-hero-desktop.svg) no-repeat, rgb(255, 248, 249);
   background-size: cover;
-  width: 100vw;
+  // width: 90vw;
   nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     .logo-img {
-      width: 6em;
-      // height: 1em;
+      width: 7em;
+      max-width: 250px;
       margin-left: 5%;
       margin: 2em;
+      cursor: pointer;
+
     }
     .btn-in-nav {
       padding: 0.45em 1.75em;
-      margin-right: 5%;
       margin: 2em;
-
+      cursor: pointer;
       background: white;
       color: black;
-      box-shadow: pink;
-
       border: none;
       border-radius: 5rem;
-
-      font-size: clamp(0.75rem, 1%, 1rem);
-      box-shadow: 0 0.15rem 0.5rem rgb(255, 213, 220);
+      font-size: 0.7rem;
+      box-shadow: 0 0.15rem 0.5rem rgb(255, 203, 212);
     }
   }
   .header-content {
-    @include flexCenter();
-    margin-top: 3em;
+    display: grid;
+    grid-template-columns: repeat(auto-fit minmax(1fr, 1.5fr));
+    margin-top: 1em;
     .header-inner {
       @include flexCenter();
-      flex-direction: column;
-      margin: 1rem 2em;
-      .header-heading {
-        @include headingSettings();
-      }
-      .header-para {
-        @include paraSettings();
+      padding: 2em;
+      .header-text {
+        @include textSettings();
+        margin: 0;
+        .header-heading {
+          @include headingSettings(center);
+        }
+        .header-para {
+          @include paraSettings(center);
+        }
       }
       .btn-under-header-para {
+        width: 100%;
+        cursor: pointer;
         font-weight: bold;
-        padding: 0.8em 4em;
-        margin: 0.5em 0;
+        padding: 0.8em 3.5em;
         background: $Pink;
         color: white;
         border: none;
         border-radius: 5rem;
-        font-size: clamp(0.75rem, 1%, 1rem);
-        box-shadow: 0 0.25rem 0.5rem pink;
       }
-      img {
+      .header-img {
         @include imgSettings(100%);
+        margin: 2.5em 0;
+
+        img {
+          @include imgSettings(100%);
+        }
       }
     }
   }
@@ -129,92 +154,86 @@ main {
   // ----------> */
 
   .section1 {
-    box-shadow: 0 0 5px 2px rgb(252, 244, 244);
-    width: 90%;
-    margin: 3em;
-    border-radius: 3%;
+    @include sectionSettings();
     .section1-content {
       @include flexCenter();
-      flex-direction: column;
-      img {
-        @include imgSettings(75%);
-        margin-top: 4em;
+      .section1-img {
+        @include imgSettings(100%);
+        margin-top: 2rem;
+        img {
+          @include imgSettings(100%);
+        }
       }
       .section1-text {
-        margin-top: 2em;
-        padding: 1rem 2rem;
+        @include textSettings();
         .section1-heading {
-          @include headingSettings();
+          @include headingSettings(center);
         }
         .section1-para {
-          @include paraSettings();
+          @include paraSettings(center);
           color: $Grayish-Blue;
         }
       }
     }
   }
-/* 
+  /* 
   // <---------
-  // Card2 styles
+  // Card 2 styles
   // ---------> */
 
   .section2 {
-    box-shadow: 0 0 5px 2px rgb(252, 244, 244);
-    width: 90%;
-    margin: 3em;
-    border-radius: 3%;
+    @include sectionSettings();
     .section2-content {
       @include flexCenter();
-      flex-direction: column;
-      img {
-        @include imgSettings(75%);
-        margin-top: 4em;
+      .section2-img {
+        @include imgSettings(100%);
+        margin-top: 2rem;
+        img {
+          @include imgSettings(100%);
+        }
       }
       .section2-text {
-        margin-top: 2em;
-        padding: 1rem 2rem;
+        @include textSettings();
         .section2-heading {
-          @include headingSettings();
+          @include headingSettings(center);
         }
         .section2-para {
-          @include paraSettings();
+          @include paraSettings(center);
           color: $Grayish-Blue;
         }
       }
     }
   }
-/* 
+  /* 
   // <---------
   // Card3 styles
   // ---------> */
 
   .section3 {
-    box-shadow: 0 0 5px 2px rgb(252, 244, 244);
-    width: 90%;
-    margin: 3em 3em 0 3em;
-    border-radius: 3%;
+    @include sectionSettings();
     .section3-content {
       @include flexCenter();
-      flex-direction: column;
-      img {
-        @include imgSettings(75%);
-        margin-top: 4em;
+      .section3-img {
+        @include imgSettings(100%);
+        margin-top: 2rem;
+        img {
+          @include imgSettings(100%);
+        }
       }
       .section3-text {
-        margin-top: 2em;
-        padding: 1rem 2rem;
+        @include textSettings();
         .section3-heading {
-          @include headingSettings();
+          @include headingSettings(center);
         }
         .section3-para {
-          @include paraSettings();
+          @include paraSettings(center);
           color: $Grayish-Blue;
         }
       }
     }
   }
-}
 
+}
 /* 
 // <-----------------------------------------------------
 card between footer and main component
@@ -223,27 +242,27 @@ card between footer and main component
 
 .middle-card {
   background: white;
-  box-shadow:0 -5px 5px -2px rgb(252, 244, 244);
-
-  margin: 1em;
+  box-shadow: 0 -5px 5px -2px rgb(255, 227, 227);
+  margin: 0 1em;
   border-radius: 1rem;
   @include flexCenter();
-  transform: translateY(5em);
+  transform: translateY(3.5em);
   .middle-card-inner {
     @include flexCenter();
     flex-direction: column;
-    padding: 1em;
+    padding: 1em 1em 0 1em;
     p {
-      font-size: .9em;
+      font-size: 0.9rem;
       font-weight: bold;
     }
     button {
+      cursor: pointer;
       padding: 0.45em 1.75em;
+      font-weight: bold;
       margin-right: 5%;
       margin: 2em;
       background: $Pink;
       color: white;
-      box-shadow: pink;
       border: none;
       border-radius: 5rem;
       font-size: clamp(0.75rem, 1%, 1rem);
@@ -258,9 +277,12 @@ card between footer and main component
 
 footer {
   background: $Very-Dark-Cyan;
+
   img {
     margin: 6em 0 0 0.5em;
+    cursor: pointer;
   }
+
   .footer-div1 {
     margin-top: 2em;
     color: white;
@@ -295,6 +317,7 @@ footer {
       }
     }
   }
+}
   .footer-div2 {
     padding: 2rem 0;
     color: white;
@@ -314,12 +337,247 @@ footer {
         font-size: 1.4rem;
         padding: 0.3em 0.3em 1em 0.3em;
       }
-    }
-    p {
-      color: white;
-      text-align: center;
-      font-size: 0.7rem;
-      padding-bottom: 3rem;
+     .fa-facebook{
+        cursor: pointer;
+      }
+     .fa-twitter{
+      cursor: pointer;
+      }
+     .fa-instagram{
+      cursor: pointer;
+      }
+  }
+}
+.Copyright{
+  color: white;
+  padding: 1.5em 0;
+  display: flex;
+  justify-content: center;
+  background: $Very-Dark-Cyan;
+}
+/* // <-----------------------------------------------------
+// Media Queries
+// -----------------------------------------------------> */
+
+// For Less than 720px
+
+@media (max-width: 719px) {
+  header {
+    .header-content {
+      .header-inner {
+        display: flex;
+        flex-direction: column;
+      }
     }
   }
+
+  main {
+    .section1 {
+      .section1-content {
+        display: flex;
+        flex-direction: column;
+
+        .section1-img {
+          max-width: 70%;
+
+        }
+        .section1-text {
+          .section1-heading {
+            @include headingSettings(center);
+          }
+          .section1-para {
+            @include paraSettings(center);
+          }
+        }
+      }
+    }
+    .section2 {
+      .section2-content {
+        display: flex;
+        flex-direction: column;
+  
+        .section2-img {
+          max-width: 70%;
+
+        }
+        .section2-text {
+          .section2-heading {
+            @include headingSettings(center);
+          }
+          .section2-para {
+            @include paraSettings(center);
+          }
+        }
+      }
+    }
+    .section3 {
+      .section3-content {
+        display: flex;
+        flex-direction: column;
+  
+        .section3-img {
+          max-width: 70%;
+        }
+        .section3-text {
+          .section3-heading {
+            @include headingSettings(center);
+          }
+          .section3-para {
+            @include paraSettings(center);
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// For Greater than 720px
+
+@media (min-width: 720px) {
+  header {
+    .header-content {
+      display: flex;
+      justify-content: center;
+      .header-inner {
+        display: flex;
+        justify-content: center;
+        .header-text {
+          width: 60%;
+          .header-heading {
+            @include headingSettings(left);
+          }
+          .header-para {
+            @include paraSettings(left);
+          }
+          .btn-under-header-para {
+            margin: 0;
+            padding: 0.8em 1em;
+            font-size: $fs-para;
+            width: auto;
+          }
+        }
+        .header-img {
+          margin-left: 2.5em;
+          @include imgSettings(100%);
+          max-width: 750px;
+          img {
+            @include imgSettings(100%);
+          }
+        }
+      }
+    }
+  }
+
+  main {
+    .section1 {
+      .section1-content {
+        padding: 2em;
+        display: flex;
+        .section1-img {
+          @include imgSettings(50%);
+          margin-left: 2em;
+          order: 2;
+          padding: 0 4em;
+          img {
+          @include imgSettings(100%);
+           width: 25em;
+          max-width: 300px;
+          
+        }
+        }
+        .section1-text {
+          max-width: 25rem;
+          order: 1;
+          .section1-heading {
+            @include headingSettings(left);
+          }
+          .section1-para {
+            @include paraSettings(left);
+          }
+        }
+      }
+    }
+
+    .section2 {
+      .section2-content {
+        padding: 2em;
+
+        display: flex;
+        .section2-img {
+          @include imgSettings(50%);
+          margin-left: 2em;
+          padding: 0 4em;
+          img {
+          @include imgSettings(100%);
+           width: 25em;
+          max-width: 300px;
+          
+        }
+        }
+        .section2-text {
+          max-width: 25rem;
+          .section2-heading {
+            @include headingSettings(left);
+          }
+          .section2-para {
+            @include paraSettings(left);
+          }
+        }
+      }
+    }
+
+    .section3 {
+      .section3-content {
+        padding: 2em;
+
+        display: flex;
+        .section3-img {
+          @include imgSettings(50%);
+          margin-left: 2em;
+          padding: 0 4em;
+          order: 2;
+
+          img {
+          @include imgSettings(100%);
+           width: 25em;
+          max-width: 300px;
+        }
+        }
+        .section3-text {
+          max-width: 25rem;
+          order: 1;
+          .section3-heading {
+            @include headingSettings(left);
+          }
+          .section3-para {
+            @include paraSettings(left);
+          }
+        }
+      }
+    }
+  }
+  .middle-card {
+    margin: 0 8em;
+  }
+  
+  footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    .footer-div1{
+      max-width: 40%;
+    }
+    .footer-div2{
+      ul{
+        list-style: none;
+        display: flex;
+        .list2{
+          margin: 0 2em;
+        }
+      }
+    }
+  }
+  
+
 }
